@@ -47,8 +47,8 @@ ball = Player("tennis_ball.png", win_width/2-20, win_height/2-20, 40, 40, 10)
 font.init()
 font1 = font.SysFont('Arial', 70)
 
-# over = font.render('Game Over', True, (255, 0 , 0))
-# win = font.render('You Win', True, (250, 255 , 0))
+over1 = font1.render('Левый чел выиграл!', True, (255, 0 , 0))
+over2 = font1.render('Правый чел выиграл!', True, (250, 255 , 0))
 
 speed_x = 1
 speed_y = 1
@@ -70,6 +70,10 @@ while game:
                 sprite_L.rect.x =0 
                 sprite_L.rect.y = win_height/2-50
                 finish = False
+    if ball.rect.x < 0:
+        window.blit(over2, (win_width/2-285, win_height/2))
+    if ball.rect.x > win_width:
+        window.blit(over1, (win_width/2-270, win_height/2))
     ball.rect.x += speed_x
     ball.rect.y += speed_y
     if ball.rect.y >= (win_height-40) or ball.rect.y <= 0:
